@@ -81,14 +81,21 @@ public class LoginTest extends BaseTest {
     // @Parameters({ "username", "invalidPassword" })
     public void loginFailedWithPasswordUsernameBlankTest()
             throws InterruptedException {
+
+        // Buka browser dan navigasi ke https://www.saucedemo.com/
         openBrowserAndNavigateTo("https://www.saucedemo.com/");
 
+        // Biarkan kolom username kosong.
         driver.findElement(By.id("user-name")).sendKeys("");
 
+        // Biarkan kolom password kosong.
         driver.findElement(By.id("password")).sendKeys("");
+        // Klik tombol "Login".
         Thread.sleep(1000);
         driver.findElement(By.id("login-button")).click();
 
+        // Hasil yang Diharapkan: Pengguna gagal login dan pesan error "Epic sadface:
+        // Username is required" ditampilkan.
         WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
         String actual = errorMessageElement.getText();
         String expected = "Epic sadface: Username is required";
@@ -106,15 +113,22 @@ public class LoginTest extends BaseTest {
     @Parameters({ "username" })
     public void loginFailedWithPasswordTBlankTest(String username)
             throws InterruptedException {
+
+        // Buka browser dan navigasi ke https://www.saucedemo.com/
         openBrowserAndNavigateTo("https://www.saucedemo.com/");
 
+        // Masukkan standard_user di kolom username.
         Thread.sleep(1000);
         driver.findElement(By.id("user-name")).sendKeys(username);
+        // Biarkan kolom password kosong.
         Thread.sleep(1000);
         driver.findElement(By.id("password")).sendKeys("");
+        // Klik tombol "Login".
         Thread.sleep(1000);
         driver.findElement(By.id("login-button")).click();
 
+        // Hasil yang Diharapkan: Pengguna gagal login dan pesan error "Epic sadface:
+        // Password is required" ditampilkan.
         WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
         String actual = errorMessageElement.getText();
         String expected = "Epic sadface: Password is required";
