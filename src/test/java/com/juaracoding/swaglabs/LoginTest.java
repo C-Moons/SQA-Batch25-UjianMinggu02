@@ -91,7 +91,7 @@ public class LoginTest extends BaseTest {
 
         WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
         String actual = errorMessageElement.getText();
-        String expected = "Epic sadface: Password is required";
+        String expected = "Epic sadface: Username is required";
 
         Assert.assertEquals(actual, expected);
         quitBrowser();
@@ -117,7 +117,7 @@ public class LoginTest extends BaseTest {
 
         WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
         String actual = errorMessageElement.getText();
-        String expected = "Epic sadface: Username and password do not match any user in this service";
+        String expected = "Epic sadface: Password is required";
 
         Assert.assertEquals(actual, expected);
         quitBrowser();
