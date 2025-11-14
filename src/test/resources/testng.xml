@@ -2,12 +2,13 @@
 <suite name="Java Testing" verbose="1">
     <test name="Basic Test">
         <parameter name="username" value="standard_user"></parameter>
+        <parameter name="invalidUsername" value="invalid_user"></parameter>
         <parameter name="password" value="secret_sauce"></parameter>
-        <parameter name="firstname" value="Hendra Tri"></parameter>
+        <!-- <parameter name="firstname" value="Hendra Tri"></parameter>
         <parameter name="lastname" value="Ardiansyah"></parameter>
-        <parameter name="code" value="1234"></parameter>
+        <parameter name="code" value="1234"></parameter> -->
         <classes>
-            <class name="com.juaracoding.swaglabs.CheckoutTest"></class>
+            <class name="com.juaracoding.swaglabs.LoginTest"></class>
         </classes>
     </test>
 </suite>

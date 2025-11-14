@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,7 +103,12 @@
                     <div class="method-list-content passed suite-Java_Testing">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Java_Testing" title="com.juaracoding.swaglabs.CheckoutTest" class="method navigator-link" hash-for-method="checkoutSuccessTest(standard_user, secret_sauce, Hendra Tri, Ardiansyah, 1234)">checkoutSuccessTest(standard_user, secret_sauce, Hendra Tri, Ardiansyah, 1234)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Java_Testing" title="com.juaracoding.swaglabs.LoginTest" class="method navigator-link" hash-for-method="loginFailedWithInvalidUsernameTest(invalid_user, secret_sauce)">loginFailedWithInvalidUsernameTest(invalid_user, secret_sauce)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Java_Testing" title="com.juaracoding.swaglabs.LoginTest" class="method navigator-link" hash-for-method="loginSuccessWithValidCredentialTest(standard_user, secret_sauce)">loginSuccessWithValidCredentialTest(standard_user, secret_sauce)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Java_Testing -->
@@ -121,15 +126,23 @@
           <div class="suite-Java_Testing-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">com.juaracoding.swaglabs.CheckoutTest</span>
+              <span class="class-name">com.juaracoding.swaglabs.LoginTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="checkoutSuccessTest(standard_user, secret_sauce, Hendra Tri, Ardiansyah, 1234)">
-                  </a> <!-- checkoutSuccessTest(standard_user, secret_sauce, Hendra Tri, Ardiansyah, 1234) -->
-                  <span class="method-name">checkoutSuccessTest</span>
-                  <span class="parameters">(standard_user,secret_sauce,Hendra Tri,Ardiansyah,1234)</span>
+                  <a name="loginFailedWithInvalidUsernameTest(invalid_user, secret_sauce)">
+                  </a> <!-- loginFailedWithInvalidUsernameTest(invalid_user, secret_sauce) -->
+                  <span class="method-name">loginFailedWithInvalidUsernameTest</span>
+                  <span class="parameters">(invalid_user,secret_sauce)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="loginSuccessWithValidCredentialTest(standard_user, secret_sauce)">
+                  </a> <!-- loginSuccessWithValidCredentialTest(standard_user, secret_sauce) -->
+                  <span class="method-name">loginSuccessWithValidCredentialTest</span>
+                  <span class="parameters">(standard_user,secret_sauce)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -146,12 +159,10 @@
 &lt;suite name=&quot;Java Testing&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Basic Test&quot; verbose=&quot;0&quot;&gt;
     &lt;parameter name=&quot;password&quot; value=&quot;secret_sauce&quot;/&gt;
-    &lt;parameter name=&quot;firstname&quot; value=&quot;Hendra Tri&quot;/&gt;
-    &lt;parameter name=&quot;code&quot; value=&quot;1234&quot;/&gt;
+    &lt;parameter name=&quot;invalidUsername&quot; value=&quot;invalid_user&quot;/&gt;
     &lt;parameter name=&quot;username&quot; value=&quot;standard_user&quot;/&gt;
-    &lt;parameter name=&quot;lastname&quot; value=&quot;Ardiansyah&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.juaracoding.swaglabs.CheckoutTest&quot;/&gt;
+      &lt;class name=&quot;com.juaracoding.swaglabs.LoginTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Basic Test --&gt;
 &lt;/suite&gt; &lt;!-- Java Testing --&gt;
@@ -191,16 +202,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'checkoutSuccessTest')
-data.setCell(0, 2, 'com.juaracoding.swaglabs.CheckoutTest')
-data.setCell(0, 3, 18600);
+data.setCell(0, 1, 'loginSuccessWithValidCredentialTest')
+data.setCell(0, 2, 'com.juaracoding.swaglabs.LoginTest')
+data.setCell(0, 3, 9329);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'loginFailedWithInvalidUsernameTest')
+data.setCell(1, 2, 'com.juaracoding.swaglabs.LoginTest')
+data.setCell(1, 3, 8355);
 window.suiteTableData['Java_Testing']= { tableData: data, tableDiv: 'times-div-Java_Testing'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 18 seconds</span>
+              <span class="suite-total-time">Total running time: 17 seconds</span>
               <div id="times-div-Java_Testing">
               </div> <!-- times-div-Java_Testing -->
             </div> <!-- times-div -->
@@ -226,19 +241,15 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.juaracoding.swaglabs.CheckoutTest</div> <!-- chronological-class-name -->
-              <div class="configuration-test before">
-                <span class="method-name">setup</span>
-                <span class="method-start">0 ms</span>
-              </div> <!-- configuration-test before -->
+              <div class="chronological-class-name">com.juaracoding.swaglabs.LoginTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">checkoutSuccessTest(standard_user, secret_sauce, Hendra Tri, Ardiansyah, 1234)</span>
-                <span class="method-start">2238 ms</span>
+                <span class="method-name">loginSuccessWithValidCredentialTest(standard_user, secret_sauce)</span>
+                <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-test after">
-                <span class="method-name">tearDown</span>
-                <span class="method-start">20843 ms</span>
-              </div> <!-- configuration-test after -->
+              <div class="test-method">
+                <span class="method-name">loginFailedWithInvalidUsernameTest(invalid_user, secret_sauce)</span>
+                <span class="method-start">9332 ms</span>
+              </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
