@@ -69,18 +69,49 @@ public class LoginTest extends BaseTest {
 
         Assert.assertEquals(actual, expected);
         quitBrowser();
-            }
+    }
 
-        @Test(priority = 4)
+    /*
+     * Test Case ID: TC-LOGIN-004
+     * Judul: Login gagal dengan username dan password kosong
+     * Skenario: Pengguna tidak memasukkan username dan password, lalu menekan
+     * tombol login.
+     */
+    @Test(priority = 4)
     // @Parameters({ "username", "invalidPassword" })
-    public void loginFailedWithPasswordUsernameBlank()
+    public void loginFailedWithPasswordUsernameBlankTest()
+            throws InterruptedException {
+        openBrowserAndNavigateTo("https://www.saucedemo.com/");
+
+        driver.findElement(By.id("user-name")).sendKeys("");
+
+        driver.findElement(By.id("password")).sendKeys("");
+        Thread.sleep(1000);
+        driver.findElement(By.id("login-button")).click();
+
+        WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
+        String actual = errorMessageElement.getText();
+        String expected = "Epic sadface: Password is required";
+
+        Assert.assertEquals(actual, expected);
+        quitBrowser();
+    }
+
+    /*
+     * Test Case ID: TC-LOGIN-005
+     * Judul: Login gagal dengan password kosong
+     * Skenario: Pengguna hanya memasukkan username, lalu menekan tombol login.
+     */
+    @Test(priority = 5)
+    @Parameters({ "username" })
+    public void loginFailedWithPasswordTBlankTest(String username)
             throws InterruptedException {
         openBrowserAndNavigateTo("https://www.saucedemo.com/");
 
         Thread.sleep(1000);
-        driver.findElement(By.id("user-name")).sendKeys();
+        driver.findElement(By.id("user-name")).sendKeys(username);
         Thread.sleep(1000);
-        driver.findElement(By.id("password")).sendKeys();
+        driver.findElement(By.id("password")).sendKeys("");
         Thread.sleep(1000);
         driver.findElement(By.id("login-button")).click();
 
@@ -91,5 +122,4 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actual, expected);
         quitBrowser();
     }
-
 }

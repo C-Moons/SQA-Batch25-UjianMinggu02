@@ -10,6 +10,7 @@
         <parameter name="code" value="1234"></parameter> -->
         <classes>
             <class name="com.juaracoding.swaglabs.LoginTest"></class>
+            <!-- <class name="com.juaracoding.swaglabs.InventoryTest"></class> -->
         </classes>
     </test>
 </suite>

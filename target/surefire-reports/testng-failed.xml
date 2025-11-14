@@ -9,7 +9,8 @@
     <classes>
       <class name="com.juaracoding.swaglabs.LoginTest">
         <methods>
-          <include name="loginFailedWithPasswordUsernameBlank"/>
+          <include name="loginFailedWithPasswordUsernameBlankTest"/>
+          <include name="loginFailedWithPasswordTBlankTest" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.juaracoding.swaglabs.LoginTest -->
     </classes>

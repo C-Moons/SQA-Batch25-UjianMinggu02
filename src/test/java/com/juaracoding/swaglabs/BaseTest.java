@@ -1,5 +1,6 @@
 package com.juaracoding.swaglabs;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -20,7 +21,15 @@ public abstract class BaseTest {
     public void quitBrowser() {
         driver.quit();
     }
-
+    public void preTestLogin(String username, String password) throws InterruptedException{
+        openBrowserAndNavigateTo("https://www.saucedemo.com/");
+        Thread.sleep(1000);
+        driver.findElement(By.id("user-name")).sendKeys(username);
+        Thread.sleep(1000);
+        driver.findElement(By.id("password")).sendKeys(password);
+        Thread.sleep(1000);
+        driver.findElement(By.id("login-button")).click();
+    }
     public void openBrowserAndNavigateTo(String url) {
         openBrowser();
         navigateTo(url);
