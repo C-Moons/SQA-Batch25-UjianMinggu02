@@ -42,7 +42,7 @@ public class CheckoutTest {
         driver.findElement(By.id("postal-code")).sendKeys(code);
         Thread.sleep(1000);
         driver.findElement(By.id("continue")).click();
-        Thread.sleep(1000);
+        Thread.sleep(500);
         driver.findElement(By.id("finish")).click();
 
         String[] path = driver.getCurrentUrl().split("/");
