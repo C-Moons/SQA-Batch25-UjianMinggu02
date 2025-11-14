@@ -111,7 +111,7 @@ public class LoginTest extends BaseTest {
      */
     @Test(priority = 5)
     @Parameters({ "username" })
-    public void loginFailedWithPasswordTBlankTest(String username)
+    public void loginFailedWithPasswordBlankTest(String username)
             throws InterruptedException {
 
         // Buka browser dan navigasi ke https://www.saucedemo.com/
