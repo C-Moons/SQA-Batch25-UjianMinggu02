@@ -12,6 +12,7 @@ public class LoginTest extends BaseTest {
     @Parameters({ "username", "password" })
     public void loginSuccessWithValidCredentialTest(String username, String password) throws InterruptedException {
         openBrowserAndNavigateTo("https://www.saucedemo.com/");
+
         Thread.sleep(1000);
         driver.findElement(By.id("user-name")).sendKeys(username);
         Thread.sleep(1000);
@@ -24,6 +25,7 @@ public class LoginTest extends BaseTest {
         String actual = "/" + path[path.length - 1];
 
         Assert.assertEquals(actual, expected);
+
         quitBrowser();
     }
 
@@ -32,6 +34,7 @@ public class LoginTest extends BaseTest {
     public void loginFailedWithInvalidUsernameTest(String invalidUsername, String password)
             throws InterruptedException {
         openBrowserAndNavigateTo("https://www.saucedemo.com/");
+
         Thread.sleep(1000);
         driver.findElement(By.id("user-name")).sendKeys(invalidUsername);
         Thread.sleep(1000);
@@ -46,4 +49,47 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actual, expected);
         quitBrowser();
     }
+
+    @Test(priority = 3)
+    @Parameters({ "username", "invalidPassword" })
+    public void loginFailedWithInvalidPasswordTest(String username, String invalidPassword)
+            throws InterruptedException {
+        openBrowserAndNavigateTo("https://www.saucedemo.com/");
+
+        Thread.sleep(1000);
+        driver.findElement(By.id("user-name")).sendKeys(username);
+        Thread.sleep(1000);
+        driver.findElement(By.id("password")).sendKeys(invalidPassword);
+        Thread.sleep(1000);
+        driver.findElement(By.id("login-button")).click();
+
+        WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
+        String actual = errorMessageElement.getText();
+        String expected = "Epic sadface: Username and password do not match any user in this service";
+
+        Assert.assertEquals(actual, expected);
+        quitBrowser();
+            }
+
+        @Test(priority = 4)
+    // @Parameters({ "username", "invalidPassword" })
+    public void loginFailedWithPasswordUsernameBlank()
+            throws InterruptedException {
+        openBrowserAndNavigateTo("https://www.saucedemo.com/");
+
+        Thread.sleep(1000);
+        driver.findElement(By.id("user-name")).sendKeys();
+        Thread.sleep(1000);
+        driver.findElement(By.id("password")).sendKeys();
+        Thread.sleep(1000);
+        driver.findElement(By.id("login-button")).click();
+
+        WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
+        String actual = errorMessageElement.getText();
+        String expected = "Epic sadface: Username and password do not match any user in this service";
+
+        Assert.assertEquals(actual, expected);
+        quitBrowser();
+    }
+
 }

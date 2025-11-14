@@ -1,67 +1,71 @@
-# Test Case untuk Login Swag Labs
+# Test Case Login saucedemo.com
 
-Dokumen ini menguraikan test case untuk fungsionalitas login aplikasi Swag Labs (https://www.saucedemo.com/).
+## Test Case 1: Login Berhasil
 
----
+*   **Test Case ID:** TC-LOGIN-001
+*   **Judul:** Login berhasil dengan kredensial yang valid
+*   **Skenario:**
+    Pengguna memasukkan username `standard_user` dan password `secret_sauce` yang valid, kemudian menekan tombol login.
+*   **Langkah-langkah:**
+    1.  Buka browser dan navigasi ke https://www.saucedemo.com/
+    2.  Masukkan `standard_user` di kolom username.
+    3.  Masukkan `secret_sauce` di kolom password.
+    4.  Klik tombol "Login".
+*   **Hasil yang Diharapkan:**
+    Pengguna berhasil login dan diarahkan ke halaman inventaris produk (`/inventory.html`).
 
-### ID Test Case: TC-LOGIN-001
-**Judul Test Case:** Verifikasi login berhasil dengan kredensial yang valid.
-**Tujuan Tes:** Untuk memastikan bahwa pengguna dapat berhasil login ke aplikasi dengan nama pengguna dan kata sandi yang valid.
-**Prasyarat:**
-- Pengguna harus memiliki akun yang valid dan aktif.
-- Pengguna harus berada di halaman login Swag Labs.
-**Langkah-langkah Tes:**
-1.  Buka https://www.saucedemo.com/.
-2.  Masukkan nama pengguna `standard_user` di kolom 'Username'.
-3.  Masukkan kata sandi `secret_sauce` di kolom 'Password'.
-4.  Klik tombol 'Login'.
-**Hasil yang Diharapkan:**
-Pengguna berhasil diarahkan ke halaman inventaris utama, dan URL berubah menjadi `https://www.saucedemo.com/inventory.html`.
+## Test Case 2: Login Gagal - Username Salah
 
----
+*   **Test Case ID:** TC-LOGIN-002
+*   **Judul:** Login gagal dengan username yang salah
+*   **Skenario:**
+    Pengguna memasukkan username yang salah dan password yang benar.
+*   **Langkah-langkah:**
+    1.  Buka browser dan navigasi ke https://www.saucedemo.com/
+    2.  Masukkan `invalid_user` di kolom username.
+    3.  Masukkan `secret_sauce` di kolom password.
+    4.  Klik tombol "Login".
+*   **Hasil yang Diharapkan:**
+    Pengguna gagal login dan pesan error "Epic sadface: Username and password do not match any user in this service" ditampilkan.
 
-### ID Test Case: TC-LOGIN-002
-**Judul Test Case:** Verifikasi login gagal dengan nama pengguna yang tidak valid.
-**Tujuan Tes:** Untuk memastikan bahwa sistem mencegah login ketika nama pengguna yang tidak valid diberikan.
-**Prasyarat:**
-- Pengguna berada di halaman login Swag Labs.
-**Langkah-langkah Tes:**
-1.  Buka https://www.saucedemo.com/.
-2.  Masukkan nama pengguna yang tidak valid (misalnya, `invalid_user`) di kolom 'Username'.
-3.  Masukkan kata sandi yang valid `secret_sauce` di kolom 'Password'.
-4.  Klik tombol 'Login'.
-**Hasil yang Diharapkan:**
-Pesan kesalahan ditampilkan: "Epic sadface: Username and password do not match any user in this service". Pengguna tetap berada di halaman login.
+## Test Case 3: Login Gagal - Password Salah
 
----
+*   **Test Case ID:** TC-LOGIN-003
+*   **Judul:** Login gagal dengan password yang salah
+*   **Skenario:**
+    Pengguna memasukkan username yang benar dan password yang salah.
+*   **Langkah-langkah:**
+    1.  Buka browser dan navigasi ke https://www.saucedemo.com/
+    2.  Masukkan `standard_user` di kolom username.
+    3.  Masukkan `invalid_password` di kolom password.
+    4.  Klik tombol "Login".
+*   **Hasil yang Diharapkan:**
+    Pengguna gagal login dan pesan error "Epic sadface: Username and password do not match any user in this service" ditampilkan.
 
-### ID Test Case: TC-LOGIN-003
-**Judul Test Case:** Verifikasi login gagal dengan kata sandi yang tidak valid.
-**Tujuan Tes:** Untuk memastikan bahwa sistem mencegah login ketika kata sandi yang tidak valid diberikan.
-**Prasyarat:**
-- Pengguna berada di halaman login Swag Labs.
-**Langkah-langkah Tes:**
-1.  Buka https://www.saucedemo.com/.
-2.  Masukkan nama pengguna yang valid `standard_user` di kolom 'Username'.
-3.  Masukkan kata sandi yang tidak valid (misalnya, `wrong_password`) di kolom 'Password'.
-4.  Klik tombol 'Login'.
-**Hasil yang Diharapkan:**
-Pesan kesalahan ditampilkan: "Epic sadface: Username and password do not match any user in this service". Pengguna tetap berada di halaman login.
+## Test Case 4: Login Gagal - Kredensial Kosong
 
----
+*   **Test Case ID:** TC-LOGIN-004
+*   **Judul:** Login gagal dengan username dan password kosong
+*   **Skenario:**
+    Pengguna tidak memasukkan username dan password, lalu menekan tombol login.
+*   **Langkah-langkah:**
+    1.  Buka browser dan navigasi ke https://www.saucedemo.com/
+    2.  Biarkan kolom username kosong.
+    3.  Biarkan kolom password kosong.
+    4.  Klik tombol "Login".
+*   **Hasil yang Diharapkan:**
+    Pengguna gagal login dan pesan error "Epic sadface: Username is required" ditampilkan.
 
-### ID Test Case: TC-LOGIN-004
-**Judul Test Case:** Verifikasi upaya login untuk pengguna yang terkunci.
-**Tujuan Tes:** Untuk memastikan bahwa pengguna yang telah terkunci dari sistem tidak dapat login.
-**Prasyarat:**
-- Akun pengguna `locked_out_user` ada.
-- Pengguna berada di halaman login Swag Labs.
-**Langkah-langkah Tes:**
-1.  Buka https://www.saucedemo.com/.
-2.  Masukkan nama pengguna `locked_out_user` di kolom 'Username'.
-3.  Masukkan kata sandi `secret_sauce` di kolom 'Password'.
-4.  Klik tombol 'Login'.
-**Hasil yang Diharapkan:**
-Pesan kesalahan ditampilkan: "Epic sadface: Sorry, this user has been locked out.". Pengguna tetap berada di halaman login.
+## Test Case 5: Login Gagal - Hanya Username
 
----
+*   **Test Case ID:** TC-LOGIN-005
+*   **Judul:** Login gagal dengan password kosong
+*   **Skenario:**
+    Pengguna hanya memasukkan username, lalu menekan tombol login.
+*   **Langkah-langkah:**
+    1.  Buka browser dan navigasi ke https://www.saucedemo.com/
+    2.  Masukkan `standard_user` di kolom username.
+    3.  Biarkan kolom password kosong.
+    4.  Klik tombol "Login".
+*   **Hasil yang Diharapkan:**
+    Pengguna gagal login dan pesan error "Epic sadface: Password is required" ditampilkan.
