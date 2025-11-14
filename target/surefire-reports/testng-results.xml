@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-11-14T10:17:27 WIB" name="Java Testing" finished-at="2025-11-14T10:17:49 WIB" duration-ms="21752">
+    <groups>
+    </groups>
+    <test started-at="2025-11-14T10:17:27 WIB" name="Basic Test" finished-at="2025-11-14T10:17:49 WIB" duration-ms="21752">
+      <class name="com.juaracoding.swaglabs.CheckoutTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.juaracoding.swaglabs.CheckoutTest@30ee2816]" started-at="2025-11-14T10:17:27 WIB" name="setup" finished-at="2025-11-14T10:17:29 WIB" duration-ms="2221" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="checkoutSuccessTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.juaracoding.swaglabs.CheckoutTest@30ee2816]" started-at="2025-11-14T10:17:29 WIB" name="checkoutSuccessTest" finished-at="2025-11-14T10:17:48 WIB" duration-ms="18600" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[standard_user]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[secret_sauce]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Hendra Tri]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Ardiansyah]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[1234]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkoutSuccessTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.juaracoding.swaglabs.CheckoutTest@30ee2816]" started-at="2025-11-14T10:17:48 WIB" name="tearDown" finished-at="2025-11-14T10:17:49 WIB" duration-ms="905" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.juaracoding.swaglabs.CheckoutTest -->
+    </test> <!-- Basic Test -->
+  </suite> <!-- Java Testing -->
+</testng-results>
