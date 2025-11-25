@@ -1,74 +1,47 @@
 package com.juaracoding.swaglabs;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.juaracoding.swaglabs.pages.InventoryPage;
+import com.juaracoding.swaglabs.pages.LoginPage;
+
 public class LoginTest extends BaseTest {
 
-    @Test(priority = 1)
+    @Test(priority = 1, enabled = true)
     @Parameters({ "username", "password" })
-    public void loginSuccessWithValidCredentialTest(String username, String password) throws InterruptedException {
-        openBrowserAndNavigateTo("https://www.saucedemo.com/");
+    public void loginSuccessWithValidCredentialTest(String username, String password) {
 
-        Thread.sleep(1000);
-        driver.findElement(By.id("user-name")).sendKeys(username);
-        Thread.sleep(1000);
-        driver.findElement(By.id("password")).sendKeys(password);
-        Thread.sleep(1000);
-        driver.findElement(By.id("login-button")).click();
+        LoginPage loginPage = new LoginPage(driver);
+        InventoryPage inventoryPage = new InventoryPage(driver);
 
-        String[] path = driver.getCurrentUrl().split("/");
-        String expected = "/inventory.html";
-        String actual = "/" + path[path.length - 1];
+        loginPage.login(username, password);
 
-        Assert.assertEquals(actual, expected);
-
-        quitBrowser();
+        Assert.assertEquals(inventoryPage.getPathURL(), "/inventory.html");
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, enabled = true)
     @Parameters({ "invalidUsername", "password" })
-    public void loginFailedWithInvalidUsernameTest(String invalidUsername, String password)
-            throws InterruptedException {
-        openBrowserAndNavigateTo("https://www.saucedemo.com/");
+    public void loginFailedWithInvalidUsernameTest(String invalidUsername, String password) {
 
-        Thread.sleep(1000);
-        driver.findElement(By.id("user-name")).sendKeys(invalidUsername);
-        Thread.sleep(1000);
-        driver.findElement(By.id("password")).sendKeys(password);
-        Thread.sleep(1000);
-        driver.findElement(By.id("login-button")).click();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(invalidUsername, password);
 
-        WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
-        String actual = errorMessageElement.getText();
         String expected = "Epic sadface: Username and password do not match any user in this service";
-
-        Assert.assertEquals(actual, expected);
-        quitBrowser();
+        Assert.assertEquals(loginPage.getErrorMessage(), expected);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, enabled = true)
     @Parameters({ "username", "invalidPassword" })
-    public void loginFailedWithInvalidPasswordTest(String username, String invalidPassword)
-            throws InterruptedException {
-        openBrowserAndNavigateTo("https://www.saucedemo.com/");
+    public void loginFailedWithInvalidPasswordTest(String username, String invalidPassword) {
 
-        Thread.sleep(1000);
-        driver.findElement(By.id("user-name")).sendKeys(username);
-        Thread.sleep(1000);
-        driver.findElement(By.id("password")).sendKeys(invalidPassword);
-        Thread.sleep(1000);
-        driver.findElement(By.id("login-button")).click();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(username, invalidPassword);
 
-        WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
-        String actual = errorMessageElement.getText();
         String expected = "Epic sadface: Username and password do not match any user in this service";
 
-        Assert.assertEquals(actual, expected);
-        quitBrowser();
+        Assert.assertEquals(loginPage.getErrorMessage(), expected);
     }
 
     /*
@@ -77,31 +50,15 @@ public class LoginTest extends BaseTest {
      * Skenario: Pengguna tidak memasukkan username dan password, lalu menekan
      * tombol login.
      */
-    @Test(priority = 4)
-    // @Parameters({ "username", "invalidPassword" })
-    public void loginFailedWithPasswordUsernameBlankTest()
-            throws InterruptedException {
+    @Test(priority = 4, enabled = true)
+    @Parameters({ "username", "invalidPassword" })
+    public void loginFailedWithPasswordUsernameBlankTest() {
 
-        // Buka browser dan navigasi ke https://www.saucedemo.com/
-        openBrowserAndNavigateTo("https://www.saucedemo.com/");
-
-        // Biarkan kolom username kosong.
-        driver.findElement(By.id("user-name")).sendKeys("");
-
-        // Biarkan kolom password kosong.
-        driver.findElement(By.id("password")).sendKeys("");
-        // Klik tombol "Login".
-        Thread.sleep(1000);
-        driver.findElement(By.id("login-button")).click();
-
-        // Hasil yang Diharapkan: Pengguna gagal login dan pesan error "Epic sadface:
-        // Username is required" ditampilkan.
-        WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
-        String actual = errorMessageElement.getText();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickButtonLogin();
         String expected = "Epic sadface: Username is required";
 
-        Assert.assertEquals(actual, expected);
-        quitBrowser();
+        Assert.assertEquals(loginPage.getErrorMessage(), expected);
     }
 
     /*
@@ -109,31 +66,14 @@ public class LoginTest extends BaseTest {
      * Judul: Login gagal dengan password kosong
      * Skenario: Pengguna hanya memasukkan username, lalu menekan tombol login.
      */
-    @Test(priority = 5)
-    @Parameters({ "username" })
-    public void loginFailedWithPasswordBlankTest(String username)
-            throws InterruptedException {
+    @Test(priority = 5, enabled = true)
+    @Parameters({ "username"})
+    public void loginFailedWithPasswordBlankTest(String username) {
 
-        // Buka browser dan navigasi ke https://www.saucedemo.com/
-        openBrowserAndNavigateTo("https://www.saucedemo.com/");
-
-        // Masukkan standard_user di kolom username.
-        Thread.sleep(1000);
-        driver.findElement(By.id("user-name")).sendKeys(username);
-        // Biarkan kolom password kosong.
-        Thread.sleep(1000);
-        driver.findElement(By.id("password")).sendKeys("");
-        // Klik tombol "Login".
-        Thread.sleep(1000);
-        driver.findElement(By.id("login-button")).click();
-
-        // Hasil yang Diharapkan: Pengguna gagal login dan pesan error "Epic sadface:
-        // Password is required" ditampilkan.
-        WebElement errorMessageElement = driver.findElement(By.xpath("//h3[@data-test='error']"));
-        String actual = errorMessageElement.getText();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(username, "");
         String expected = "Epic sadface: Password is required";
 
-        Assert.assertEquals(actual, expected);
-        quitBrowser();
+        Assert.assertEquals(loginPage.getErrorMessage(), expected);
     }
 }
